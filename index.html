@@ -15,6 +15,7 @@
       --dark2: #13131f;
       --green-wa: #25D366;
       --green-wa-dark: #1ebe5d;
+      --muted: #e5e7eb;
     }
 
     body {
@@ -100,37 +101,43 @@
       animation: fadeDown 0.9s 0.1s ease both;
     }
 
-    /* Video wrapper */
-    .video-wrapper {
+    /* ── VIDEO CONTAINER (padrão Lovable) ── */
+    .video-container {
       width: 100%;
-      max-width: 340px;
-      border-radius: 14px;
+      max-width: 300px;
+      margin: 0 auto 12px;
+      border-radius: 12px;
+      border: 2px solid rgba(212,160,23,0.35); /* borda dourada para combinar com o tema */
       overflow: hidden;
       box-shadow:
-        0 0 0 1px rgba(212,160,23,0.25),
-        0 8px 40px rgba(0,0,0,0.6),
-        0 0 60px rgba(212,160,23,0.08);
+        0 25px 50px -12px rgb(0 0 0 / 0.25),
+        0 0 40px rgba(212,160,23,0.08); /* glow sutil dourado da presell */
       animation: fadeUp 0.9s 0.2s ease both;
-      background: #000;
-      position: relative;
     }
 
-    .video-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      border: 1px solid rgba(212,160,23,0.3);
-      pointer-events: none;
-      z-index: 2;
+    .video-wrapper {
+      position: relative;
+      padding-top: 177.7777%; /* aspect ratio 9:16 */
     }
 
     .video-wrapper iframe {
-      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 300px;
+      height: 100%;
       border: none;
+      display: block;
     }
+
+    /* Desktop: aumenta para 576px */
+    @media (min-width: 640px) {
+      .video-container {
+        max-width: 36rem; /* 576px */
+        margin-bottom: 32px;
+      }
+    }
+    /* ── FIM VIDEO CONTAINER ── */
 
     /* WhatsApp button */
     .btn-whatsapp {
@@ -207,14 +214,18 @@
 
     <p class="subtitle">Atendimento exclusivo &amp; personalizado</p>
 
-    <div class="video-wrapper">
-      <iframe
-        id="panda-d9ae8ff2-a904-4c67-8543-114ca2215cb2"
-        src="https://player-vz-ca22154b-ab7.tv.pandavideo.com.br/embed/?v=d9ae8ff2-a904-4c67-8543-114ca2215cb2"
-        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
-        allowfullscreen
-        fetchpriority="high">
-      </iframe>
+    <!-- Vídeo no padrão Lovable: 9:16 vertical -->
+    <div class="video-container">
+      <div class="video-wrapper">
+        <iframe
+          id="panda-d9ae8ff2-a904-4c67-8543-114ca2215cb2"
+          src="https://player-vz-ca22154b-ab7.tv.pandavideo.com.br/embed/?v=d9ae8ff2-a904-4c67-8543-114ca2215cb2"
+          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+          allowfullscreen
+          fetchpriority="high"
+          title="Maria Luiza"
+        ></iframe>
+      </div>
     </div>
 
     <a
